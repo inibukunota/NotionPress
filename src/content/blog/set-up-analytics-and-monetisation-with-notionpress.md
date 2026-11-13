@@ -2,7 +2,7 @@
 title: "How to Set Up Analytics and Monetisation With NotionPress"
 description: "Learn how to connect Google Analytics 4, configure ads.txt and use basic traffic data to understand and grow a NotionPress website."
 slug: "set-up-analytics-and-monetisation-with-notionpress"
-status: "draft"
+status: "published"
 publishedDate: "2026-11-13"
 author: "NotionPress"
 category: "Guides"

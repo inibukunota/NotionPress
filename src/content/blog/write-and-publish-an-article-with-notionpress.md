@@ -2,7 +2,7 @@
 title: "How to Write and Publish an Article With NotionPress"
 description: "Learn how to structure, write, publish and update an article using the NotionPress Stories database."
 slug: "write-and-publish-an-article-with-notionpress"
-status: "draft"
+status: "published"
 publishedDate: "2026-11-13"
 author: "NotionPress"
 category: "Guides"

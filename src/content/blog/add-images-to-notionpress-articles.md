@@ -2,7 +2,7 @@
 title: "How to Add Images to NotionPress Articles"
 description: "Learn how images work in NotionPress, including the automatic featured image system and practical image formatting tips."
 slug: "add-images-to-notionpress-articles"
-status: "draft"
+status: "published"
 publishedDate: "2026-11-13"
 author: "NotionPress"
 category: "Guides"

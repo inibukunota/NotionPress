@@ -2,7 +2,7 @@
 title: "How to Troubleshoot a NotionPress Article That Is Not Showing"
 description: "A practical troubleshooting guide for when a NotionPress article does not appear after publishing it in Notion."
 slug: "troubleshoot-notionpress-article-not-showing"
-status: "draft"
+status: "published"
 publishedDate: "2026-11-13"
 author: "NotionPress"
 category: "Guides"

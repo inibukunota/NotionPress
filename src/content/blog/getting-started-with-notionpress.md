@@ -2,7 +2,7 @@
 title: "Getting Started With NotionPress: Build Your First Notion-Powered Blog"
 description: "A practical introduction to NotionPress, including the setup flow from GitHub and Notion to Astro and Cloudflare Pages."
 slug: "getting-started-with-notionpress"
-status: "draft"
+status: "published"
 publishedDate: "2026-11-13"
 author: "NotionPress"
 category: "Guides"
