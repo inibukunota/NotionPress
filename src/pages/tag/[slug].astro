@@ -3,4 +3,18 @@ import {getPublishedPosts,slugify} from "../../lib/content"; import BaseLayout f
 export async function getStaticPaths(){const posts=await getPublishedPosts();return [...new Set(posts.flatMap(p=>p.data.tags))].map(tag=>({params:{slug:slugify(tag)},props:{tag}}));}
 const {tag}=Astro.props; const posts=(await getPublishedPosts()).filter(p=>p.data.tags.includes(tag));
 ---
-<BaseLayout title={`#${tag} | ${siteConfig.name}`} description={`Posts tagged ${tag}.`} structuredData={collectionPageSchema("#"+tag,`Posts tagged ${tag}.`,siteConfig.url+`/tag/${slugify(tag)}/`)}><main><section class="page-intro"><h1>#{tag}</h1></section><div class="story-grid">{posts.map(post=><article class="story-card"><a href={`/blog/${post.data.slug}/`}>{post.data.heroImage&&<img src={post.data.heroImage} alt={post.data.title}/>}<div class="story-card-body"><h2>{post.data.title}</h2><p>{post.data.description}</p></div></a></article>)}</div></main></BaseLayout>
+<BaseLayout title={`#${tag} | ${siteConfig.name}`} description={`Posts tagged ${tag}.`} structuredData={collectionPageSchema("#"+tag,`Posts tagged ${tag}.`,siteConfig.url+`/tag/${slugify(tag)}/`)}>
+  <main class="personal-listing">
+    <section class="personal-posts">
+      <div class="section-heading"><h1>#{tag}</h1></div>
+      {posts.map(post=><article class="personal-post">
+        {post.data.heroImage&&<a class="personal-post-image" href={`/blog/${post.data.slug}/`}><img src={post.data.heroImage} alt={post.data.title} loading="lazy"/></a>}
+        <div class="personal-post-copy">
+          <div class="eyebrow">{post.data.category}</div>
+          <h2><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h2>
+          <p>{post.data.description}</p>
+        </div>
+      </article>)}
+    </section>
+  </main>
+</BaseLayout>
