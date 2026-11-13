@@ -11,14 +11,9 @@ const meta = (post: typeof posts[number]) =>
 
 <BaseLayout title={siteConfig.name} description={siteConfig.description} structuredData={websiteSchema()}>
   <main class="personal-home">
-    <header class="personal-intro">
-      <h1>{siteConfig.name}</h1>
-      <p>{siteConfig.description}</p>
-    </header>
-
     <section class="personal-posts" aria-labelledby="latest-heading">
       <div class="section-heading">
-        <h2 id="latest-heading">Latest Posts</h2>
+        <h1 id="latest-heading">Latest Posts</h1>
         <a href="/blog/">All posts</a>
       </div>
 
@@ -31,7 +26,7 @@ const meta = (post: typeof posts[number]) =>
           )}
           <div class="personal-post-copy">
             <div class="eyebrow">{post.data.category}</div>
-            <h3><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h3>
+            <h2><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h2>
             <p>{post.data.description}</p>
             <div class="story-meta">{meta(post)} · By {post.data.author}</div>
           </div>
