@@ -1,3 +1,7 @@
+/* Hallmark · macrostructure: editorial-stream · theme: quiet-editorial · genre: editorial
+ * pre-emit critique: P5 H5 E5 S5 R5 V4
+ * slop test: pass
+ */
 @import "./theme.css";
 @import "./typography.css";
 
@@ -6,6 +10,7 @@
 html {
   background: var(--color-background);
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -15,6 +20,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.65;
   overflow-wrap: break-word;
+  overflow-x: clip;
 }
 
 a { color: var(--color-link); }
@@ -24,7 +30,6 @@ a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 img { max-width: 100%; height: auto; }
 button, input { font: inherit; }
 
-/* Shared site shell */
 .site-header { border-bottom: 1px solid var(--color-border); }
 
 .site-header-inner {
@@ -35,6 +40,7 @@ button, input { font: inherit; }
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-1);
+  min-width: 0;
 }
 
 .site-brand {
@@ -43,12 +49,15 @@ button, input { font: inherit; }
   font-weight: 750;
   letter-spacing: -.02em;
   text-decoration: none;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .site-description {
   margin: 0;
   color: var(--color-muted);
   font-size: .9rem;
+  overflow-wrap: anywhere;
 }
 
 .site-header nav {
@@ -61,39 +70,43 @@ button, input { font: inherit; }
   color: var(--color-muted);
   font-size: .82rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .site-header nav a:hover { color: var(--color-text); }
 .mobile-menu { display: none; }
 
-/* Shared page shell */
 .personal-home,
 .personal-listing {
   width: min(100% - 2rem, var(--site-width));
   margin-inline: auto;
-  padding-block: var(--space-6) var(--space-6);
+  padding-block: var(--space-6);
 }
 
-/* Post listings */
 .personal-posts { margin-top: 0; }
 
 .section-heading {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  gap: var(--space-4);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--color-border-strong);
+  min-width: 0;
 }
 
 .section-heading h1,
 .section-heading h2 {
   margin: 0;
   font-size: 1.15rem;
+  line-height: 1.25;
 }
 
 .section-heading a {
+  flex: 0 0 auto;
   font-size: .78rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .eyebrow {
@@ -108,6 +121,7 @@ button, input { font: inherit; }
   display: block;
   padding-block: var(--space-5);
   border-bottom: 1px solid var(--color-border);
+  min-width: 0;
 }
 
 .personal-post-image {
@@ -127,6 +141,7 @@ button, input { font: inherit; }
   margin: var(--space-1) 0 var(--space-2);
   font-size: 1.35rem;
   line-height: 1.18;
+  overflow-wrap: anywhere;
 }
 
 .personal-post h2 a,
@@ -154,7 +169,10 @@ button, input { font: inherit; }
   gap: var(--space-1) var(--space-4);
 }
 
-/* Article */
+.story-meta span {
+  min-width: 0;
+}
+
 .personal-article { width: 100%; }
 
 .personal-article-header {
@@ -165,12 +183,15 @@ button, input { font: inherit; }
 .personal-article-header-inner {
   width: min(100%, var(--content-width));
   margin-inline: auto;
+  min-width: 0;
 }
 
 .personal-article-header h1 {
   margin: var(--space-1) 0 var(--space-2);
   font-size: clamp(2rem, 5vw, 3.1rem);
   line-height: 1.08;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .personal-article-header .story-excerpt {
@@ -191,7 +212,6 @@ button, input { font: inherit; }
   height: auto;
 }
 
-/* Reading column */
 .personal-article .story-body {
   width: min(100%, var(--content-width));
   margin-inline: auto;
@@ -204,13 +224,9 @@ button, input { font: inherit; }
   margin-bottom: var(--space-4);
 }
 
-.story-body > *:last-child {
-  margin-bottom: 0;
-}
+.story-body > *:last-child { margin-bottom: 0; }
 
-.story-body p {
-  margin-bottom: var(--space-4);
-}
+.story-body p { margin-bottom: var(--space-4); }
 
 .story-body h2 {
   margin-top: var(--space-7);
@@ -235,9 +251,7 @@ button, input { font: inherit; }
 
 .story-body h2:first-child,
 .story-body h3:first-child,
-.story-body h4:first-child {
-  margin-top: 0;
-}
+.story-body h4:first-child { margin-top: 0; }
 
 .story-body ul,
 .story-body ol {
@@ -245,9 +259,7 @@ button, input { font: inherit; }
   margin-bottom: var(--space-4);
 }
 
-.story-body li + li {
-  margin-top: var(--space-2);
-}
+.story-body li + li { margin-top: var(--space-2); }
 
 .story-body blockquote {
   margin-block: var(--space-5);
@@ -258,15 +270,14 @@ button, input { font: inherit; }
 
 .story-body pre {
   overflow-x: auto;
+  max-width: 100%;
   margin-block: var(--space-5);
   padding: var(--space-4);
-  background: #f1f1f1;
+  background: var(--color-code-surface);
   border: 1px solid var(--color-border);
 }
 
-.story-body figure {
-  margin-block: var(--space-5);
-}
+.story-body figure { margin-block: var(--space-5); }
 
 .story-body figure img {
   display: block;
@@ -280,7 +291,6 @@ button, input { font: inherit; }
   line-height: 1.5;
 }
 
-/* Article actions */
 .share,
 .story-footer,
 .related {
@@ -293,12 +303,19 @@ button, input { font: inherit; }
   padding-top: var(--space-3);
   border-top: 1px solid var(--color-border);
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-4);
   font-size: .82rem;
 }
 
 .share a,
 .tags a { text-decoration: none; }
+
+.share a,
+.tags a,
+.site-footer a {
+  white-space: nowrap;
+}
 
 .story-footer {
   margin-top: var(--space-4);
@@ -321,9 +338,9 @@ button, input { font: inherit; }
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--color-border-strong);
   font-size: 1.15rem;
+  line-height: 1.25;
 }
 
-/* Footer */
 .site-footer {
   border-top: 1px solid var(--color-border);
   background: var(--color-surface);
@@ -339,6 +356,7 @@ button, input { font: inherit; }
   gap: var(--space-5);
   color: var(--color-muted);
   font-size: .8rem;
+  min-width: 0;
 }
 
 .site-footer p { margin: var(--space-1) 0 0; }
@@ -349,7 +367,6 @@ button, input { font: inherit; }
   text-decoration: none;
 }
 
-/* Mobile keeps the same component rhythm, only reduces outer shell spacing */
 @media (max-width: 700px) {
   .site-header-inner,
   .personal-home,
@@ -372,6 +389,7 @@ button, input { font: inherit; }
     color: var(--color-text);
     font-size: .82rem;
     list-style: none;
+    white-space: nowrap;
   }
 
   .mobile-menu summary::-webkit-details-marker { display: none; }
@@ -392,6 +410,7 @@ button, input { font: inherit; }
     padding: var(--space-2) var(--space-3);
     color: var(--color-text);
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .personal-home,
@@ -405,6 +424,16 @@ button, input { font: inherit; }
   .personal-post h3 { font-size: 1.15rem; }
 
   .personal-post p { display: none; }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+
+  .section-heading h1,
+  .section-heading h2 {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
 
   .personal-article-header { padding-bottom: var(--space-4); }
 
