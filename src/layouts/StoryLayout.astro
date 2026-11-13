@@ -52,14 +52,16 @@ const related = all
     <main class="personal-home">
       <article class="personal-article">
         <header class="personal-article-header">
-          <div class="eyebrow">{p.category}</div>
-          <h1>{p.title}</h1>
-          <p class="story-excerpt">{p.description}</p>
-          <div class="story-meta">
-            <span>By {p.author}</span>
-            <FormattedDate date={p.publishedDate} />
-            {p.updatedDate && <span>Updated <FormattedDate date={p.updatedDate} /></span>}
-            {p.readingTime && <span>{p.readingTime} min read</span>}
+          <div class="personal-article-header-inner">
+            <div class="eyebrow">{p.category}</div>
+            <h1>{p.title}</h1>
+            <p class="story-excerpt">{p.description}</p>
+            <div class="story-meta">
+              <span>By {p.author}</span>
+              <FormattedDate date={p.publishedDate} />
+              {p.updatedDate && <span>Updated <FormattedDate date={p.updatedDate} /></span>}
+              {p.readingTime && <span>{p.readingTime} min read</span>}
+            </div>
           </div>
         </header>
 
@@ -97,7 +99,14 @@ const related = all
                 <article class="personal-post">
                   {post.data.heroImage && (
                     <a class="personal-post-image" href={`/blog/${post.data.slug}/`}>
-                      <img src={post.data.heroImage} alt={post.data.title} loading="lazy" />
+                      <img
+                        src={post.data.heroImage}
+                        alt={post.data.title}
+                        width="1200"
+                        height="675"
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </a>
                   )}
                   <div class="personal-post-copy">
