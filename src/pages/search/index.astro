@@ -1,9 +1,0 @@
----
-import BaseLayout from "../../layouts/BaseLayout.astro"; import {getPublishedPosts} from "../../lib/content"; import {siteConfig} from "../../config/site";
-const posts=await getPublishedPosts();
----
-<BaseLayout title={`Search | ${siteConfig.name}`} description={`Search ${siteConfig.name}.`}><main><section class="page-intro"><h1>Search</h1><p>Find published posts.</p></section><div class="search-box"><label class="sr-only" for="site-search">Search posts</label><input id="site-search" type="search" placeholder="Search posts..." autocomplete="off"/></div><div id="results" class="story-grid">{posts.map(post=><article class="story-card" data-search={`${post.data.title} ${post.data.description} ${post.data.category} ${post.data.tags.join(" ")}`.toLowerCase()}><a href={`/blog/${post.data.slug}/`}>{post.data.heroImage&&<img src={post.data.heroImage} alt={post.data.title} loading="lazy"/>}<div class="story-card-body"><div class="story-meta">{post.data.category}</div><h2>{post.data.title}</h2><p>{post.data.description}</p></div></a></article>)}</div><p id="no-results" class="empty-state" hidden>No matching posts.</p></main></BaseLayout>
-<script>
-const input=document.querySelector("#site-search"), cards=[...document.querySelectorAll("[data-search]")], empty=document.querySelector("#no-results");
-input?.addEventListener("input",()=>{const q=input.value.trim().toLowerCase();let shown=0;cards.forEach(card=>{const match=!q||card.dataset.search.includes(q);card.hidden=!match;if(match)shown++;});if(empty)empty.hidden=shown!==0;});
-</script>
