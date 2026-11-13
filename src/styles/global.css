@@ -155,18 +155,23 @@ button, input { font: inherit; }
 .personal-article { width: 100%; }
 
 .personal-article-header {
-  padding-block: 0 1.25rem;
+  padding-block: 0 1rem;
   border-bottom: 1px solid var(--color-border);
 }
 
+.personal-article-header-inner {
+  width: min(100%, var(--content-width));
+  margin-inline: auto;
+}
+
 .personal-article-header h1 {
-  margin: .3rem 0 .6rem;
+  margin: .3rem 0 .55rem;
   font-size: clamp(2rem, 5vw, 3.1rem);
   line-height: 1.08;
 }
 
 .personal-article-header .story-excerpt {
-  max-width: 680px;
+  max-width: 100%;
   margin: 0;
   color: var(--color-muted);
   font-size: 1.05rem;
@@ -179,13 +184,12 @@ button, input { font: inherit; }
   gap: .3rem 1rem;
 }
 
-.personal-article-image { margin: 1.25rem 0 2rem; }
+.personal-article-image { margin: 1rem 0 1.5rem; }
 
 .personal-article-image img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
 }
 
 /* Comfortable reading width inside the shared page shell */
@@ -196,18 +200,18 @@ button, input { font: inherit; }
   line-height: 1.78;
 }
 
-.story-body p { margin: 0 0 1.4rem; }
-.story-body h2 { margin: 2.5rem 0 .8rem; }
-.story-body h3 { margin: 2rem 0 .65rem; }
+.story-body p { margin: 0 0 1.2rem; }
+.story-body h2 { margin: 2.1rem 0 .7rem; }
+.story-body h3 { margin: 1.7rem 0 .6rem; }
 
 .story-body ul,
 .story-body ol {
   padding-left: 1.5rem;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.2rem;
 }
 
 .story-body blockquote {
-  margin: 2rem 0;
+  margin: 1.6rem 0;
   padding: .25rem 1.25rem;
   border-left: 3px solid var(--color-border-strong);
   color: var(--color-muted);
@@ -220,7 +224,7 @@ button, input { font: inherit; }
   border: 1px solid var(--color-border);
 }
 
-.story-body figure { margin: 2rem 0; }
+.story-body figure { margin: 1.75rem 0; }
 .story-body figure img { display: block; width: 100%; }
 
 .story-body figcaption {
@@ -238,8 +242,8 @@ button, input { font: inherit; }
 }
 
 .share {
-  margin-top: 2rem;
-  padding-top: .9rem;
+  margin-top: 1.5rem;
+  padding-top: .75rem;
   border-top: 1px solid var(--color-border);
   display: flex;
   gap: 1rem;
@@ -250,8 +254,8 @@ button, input { font: inherit; }
 .tags a { text-decoration: none; }
 
 .story-footer {
-  margin-top: 1.25rem;
-  padding-top: .9rem;
+  margin-top: 1rem;
+  padding-top: .75rem;
   border-top: 1px solid var(--color-border);
 }
 
@@ -263,7 +267,7 @@ button, input { font: inherit; }
 
 .tags a { font-size: .82rem; }
 
-.related { margin-top: 2.5rem; }
+.related { margin-top: 2rem; }
 
 .related h2 {
   margin: 0;
@@ -357,17 +361,17 @@ button, input { font: inherit; }
 
   .personal-post p { display: none; }
 
-  .personal-article-header { padding-bottom: 1rem; }
+  .personal-article-header { padding-bottom: .85rem; }
 
   .personal-article-header h1 {
     font-size: clamp(2rem, 9vw, 2.7rem);
   }
 
-  .personal-article-image { margin-block: 1rem 1.75rem; }
+  .personal-article-image { margin-block: .85rem 1.5rem; }
 
   .personal-article .story-body { font-size: 1.05rem; }
 
-  .related { margin-top: 2rem; }
+  .related { margin-top: 1.75rem; }
 
   .site-footer-inner {
     align-items: flex-start;
