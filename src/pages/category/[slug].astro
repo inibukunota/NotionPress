@@ -3,4 +3,18 @@ import {getPublishedPosts,slugify} from "../../lib/content"; import BaseLayout f
 export async function getStaticPaths(){const posts=await getPublishedPosts();return [...new Set(posts.map(p=>p.data.category))].map(category=>({params:{slug:slugify(category)},props:{category}}));}
 const {category}=Astro.props; const posts=(await getPublishedPosts()).filter(p=>p.data.category===category);
 ---
-<BaseLayout title={`${category} | ${siteConfig.name}`} description={`Posts in the ${category} category.`} structuredData={collectionPageSchema(category,`Posts in the ${category} category.`,siteConfig.url+`/category/${slugify(category)}/`)}><main><section class="page-intro"><h1>{category}</h1><p>Posts in this category.</p></section><div class="story-grid">{posts.map(post=><article class="story-card"><a href={`/blog/${post.data.slug}/`}>{post.data.heroImage&&<img src={post.data.heroImage} alt={post.data.title}/>}<div class="story-card-body"><h2>{post.data.title}</h2><p>{post.data.description}</p></div></a></article>)}</div></main></BaseLayout>
+<BaseLayout title={`${category} | ${siteConfig.name}`} description={`Posts in the ${category} category.`} structuredData={collectionPageSchema(category,`Posts in the ${category} category.`,siteConfig.url+`/category/${slugify(category)}/`)}>
+  <main class="personal-listing">
+    <section class="personal-posts">
+      <div class="section-heading"><h1>{category}</h1></div>
+      {posts.map(post=><article class="personal-post">
+        {post.data.heroImage&&<a class="personal-post-image" href={`/blog/${post.data.slug}/`}><img src={post.data.heroImage} alt={post.data.title} loading="lazy"/></a>}
+        <div class="personal-post-copy">
+          <div class="eyebrow">{post.data.category}</div>
+          <h2><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h2>
+          <p>{post.data.description}</p>
+        </div>
+      </article>)}
+    </section>
+  </main>
+</BaseLayout>
