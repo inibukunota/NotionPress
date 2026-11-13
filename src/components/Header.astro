@@ -5,9 +5,15 @@ import { siteConfig } from "../config/site";
 <header class="site-header">
   <div class="site-header-inner">
     <a class="site-brand" href="/" aria-label={siteConfig.name}>{siteConfig.name}</a>
-    <nav aria-label="Primary navigation">
+    <nav class="desktop-nav" aria-label="Primary navigation">
       {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
     <a class="site-search-link" href="/search/" aria-label="Search">Search</a>
+    <details class="mobile-menu">
+      <summary aria-label="Open navigation">Menu</summary>
+      <nav aria-label="Mobile navigation">
+        {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+    </details>
   </div>
 </header>
