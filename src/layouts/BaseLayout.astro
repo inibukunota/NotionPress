@@ -1,0 +1,26 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import StructuredData from "../components/StructuredData.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+}
+const { title, description, image, structuredData } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+    {structuredData && <StructuredData data={structuredData} />}
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>
