@@ -43,7 +43,7 @@ function readFrontmatter(file) {
 
 const name = readConfig("name", "My Blog");
 const description = readConfig("description", "A simple blog powered by Notion and Astro.");
-const siteUrl = readConfig("url", "https://example.com").replace(/\\/$/, "");
+const siteUrl = readConfig("url", "https://example.com").replace(/\/$/, "");
 
 const posts = fs.readdirSync(contentDir)
   .filter((file) => file.endsWith(".md"))
