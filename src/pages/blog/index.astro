@@ -1,5 +1,25 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro"; import {getPublishedPosts} from "../../lib/content"; import {collectionPageSchema} from "../../lib/seo/structured-data"; import {siteConfig} from "../../config/site";
-const posts=await getPublishedPosts();
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPublishedPosts } from "../../lib/content";
+import { collectionPageSchema } from "../../lib/seo/structured-data";
+import { siteConfig } from "../../config/site";
+
+const posts = await getPublishedPosts();
+const meta = (post: typeof posts[number]) => `${post.data.category} · ${post.data.publishedDate.toLocaleDateString("en-MY")} · ${Math.max(1, Math.ceil((post.body?.trim().split(/\\s+/).length || 0) / 200))} min read`;
 ---
-<BaseLayout title={`Blog | ${siteConfig.name}`} description={`Latest posts from ${siteConfig.name}.`} structuredData={collectionPageSchema("Blog",`Latest posts from ${siteConfig.name}.`,siteConfig.url+"/blog/")}><main><section class="page-intro"><h1>Blog</h1><p>Latest posts from {siteConfig.name}.</p></section><div class="story-grid">{posts.map(post=><article class="story-card"><a href={`/blog/${post.data.slug}/`}>{post.data.heroImage&&<img src={post.data.heroImage} alt={post.data.title}/>}<div class="story-card-body"><div class="story-meta">{post.data.category} · {post.data.publishedDate.toLocaleDateString("en-MY")}</div><h2>{post.data.title}</h2><p>{post.data.description}</p></div></a></article>)}</div></main></BaseLayout>
+<BaseLayout title={`Blog | ${siteConfig.name}`} description={`Latest posts from ${siteConfig.name}.`} structuredData={collectionPageSchema("Blog", `Latest posts from ${siteConfig.name}.`, siteConfig.url + "/blog/")}>
+  <main class="listing-page">
+    <header class="page-heading"><div class="eyebrow">Publication</div><h1>Articles</h1><p>Stories, guides and ideas from {siteConfig.name}.</p></header>
+    <section class="story-list">
+      {posts.map(post => <article class="story-row">
+        {post.data.heroImage && <a class="story-row-image" href={`/blog/${post.data.slug}/`}><img src={post.data.heroImage} alt={post.data.title} loading="lazy" /></a>}
+        <div>
+          <div class="eyebrow">{post.data.category}</div>
+          <h2><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h2>
+          <p>{post.data.description}</p>
+          <div class="story-meta">{meta(post)}</div>
+        </div>
+      </article>)}
+    </section>
+  </main>
+</BaseLayout>
