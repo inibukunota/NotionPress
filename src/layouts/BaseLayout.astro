@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import StructuredData from "../components/StructuredData.astro";
+import { siteConfig } from "../config/site";
 import "../styles/global.css";
 
 interface Props {
@@ -14,7 +15,7 @@ interface Props {
 const { title, description, image, structuredData } = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={siteConfig.language}>
   <head>
     <BaseHead title={title} description={description} image={image} />
     {structuredData && <StructuredData data={structuredData} />}
