@@ -594,3 +594,29 @@ input {
     margin-block: 1.5rem 2rem;
   }
 }
+
+
+/* Final shared page rhythm */
+.site-header-inner {
+  width: min(100% - 2rem, 780px);
+  min-height: 0;
+  padding-block: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .25rem;
+}
+.site-description { margin: 0; color: var(--color-muted); font-size: .9rem; }
+.personal-home, .personal-listing { width: min(100% - 2rem, 780px); padding-block: 2rem 4rem; }
+.personal-intro { padding: 0; border: 0; }
+.personal-posts { margin-top: 0; }
+.personal-article-header { padding-block: 0 1.25rem; border-bottom: 1px solid var(--color-border); }
+.personal-article-header h1 { margin: .3rem 0 .6rem; }
+.personal-article-image { margin: 1.25rem 0 2rem; }
+.personal-article .story-body { margin-top: 0; }
+.related { margin-top: 2.5rem; }
+@media (max-width: 700px) {
+  .site-header-inner { width: min(100% - 1.25rem, 680px); padding-block: 1rem; }
+  .personal-home, .personal-listing { width: min(100% - 1.25rem, 680px); padding-block: 1.75rem 3rem; }
+  .personal-article-image { margin-block: 1rem 1.75rem; }
+}
