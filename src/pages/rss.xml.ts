@@ -1,3 +1,0 @@
-export const prerender = true;
-
-import rss from "@astrojs/rss"; import {getPublishedPosts} from "../lib/content"; import {siteConfig} from "../config/site"; export async function GET(context:any){const posts=await getPublishedPosts();return rss({title:siteConfig.name,description:siteConfig.description,site:context.site??siteConfig.url,items:posts.map(p=>({title:p.data.title,description:p.data.description,pubDate:p.data.publishedDate,link:`/blog/${p.data.slug}/`}))});}
