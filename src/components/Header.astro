@@ -4,10 +4,8 @@ import { siteConfig } from "../config/site";
 ---
 <header class="site-header">
   <div class="site-header-inner">
-    <div class="site-header-brand">
-      <a class="site-brand" href="/">{siteConfig.name}</a>
-      <p>{siteConfig.description}</p>
-    </div>
+    <a class="site-brand" href="/">{siteConfig.name}</a>
+    <p class="site-description">{siteConfig.description}</p>
 
     <nav class="desktop-nav" aria-label="Primary navigation">
       {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
