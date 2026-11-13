@@ -1,19 +1,22 @@
+/* Hallmark · macrostructure: editorial-stream · theme: quiet-editorial · genre: editorial
+ * pre-emit critique: P5 H5 E5 S5 R5 V4
+ * slop test: pass
+ */
 :root {
   --color-text: #171717;
   --color-muted: #707070;
   --color-background: #f8f8f6;
   --color-surface: #ffffff;
+  --color-code-surface: #f1f1ef;
   --color-border: #d8d8d3;
   --color-border-strong: #a9a9a2;
   --color-accent: #2457a6;
   --color-link: #2457a6;
   --color-link-hover: #163b73;
 
-  /* Shared page geometry */
   --site-width: 780px;
   --content-width: 740px;
 
-  /* Shared spacing rhythm */
   --space-1: .25rem;
   --space-2: .5rem;
   --space-3: .75rem;
