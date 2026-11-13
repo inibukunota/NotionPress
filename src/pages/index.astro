@@ -17,11 +17,19 @@ const meta = (post: typeof posts[number]) =>
         <a href="/blog/">All posts</a>
       </div>
 
-      {posts.map((post) => (
+      {posts.map((post, index) => (
         <article class="personal-post">
           {post.data.heroImage && (
             <a class="personal-post-image" href={`/blog/${post.data.slug}/`} aria-label={post.data.title}>
-              <img src={post.data.heroImage} alt={post.data.title} loading="lazy" />
+              <img
+                src={post.data.heroImage}
+                alt={post.data.title}
+                width="1200"
+                height="675"
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchpriority={index === 0 ? "high" : "auto"}
+                decoding="async"
+              />
             </a>
           )}
           <div class="personal-post-copy">
