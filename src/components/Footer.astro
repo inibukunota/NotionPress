@@ -3,7 +3,14 @@ import { siteConfig } from "../config/site";
 ---
 <footer class="site-footer">
   <div class="site-footer-inner">
-    <div><strong>{siteConfig.name}</strong><span> · Built with NotionPress</span></div>
-    <nav aria-label="Footer navigation"><a href="/rss.xml">RSS</a><span> | </span><a href="/blog/">Blog</a></nav>
+    <div>
+      <strong>{siteConfig.name}</strong>
+      <p>{siteConfig.description}</p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <a href="/blog/">Articles</a>
+      <a href="/rss.xml">RSS</a>
+    </nav>
+    <small>© {new Date().getFullYear()} {siteConfig.name}</small>
   </div>
 </footer>
