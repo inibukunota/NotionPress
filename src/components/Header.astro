@@ -4,12 +4,10 @@ import { siteConfig } from "../config/site";
 ---
 <header class="site-header">
   <div class="site-header-inner">
-    <div class="brand-area">
-      <a class="site-brand" href="/">{siteConfig.name}</a>
-      <span class="site-tagline">A blog powered by Notion</span>
-    </div>
-    <nav aria-label="Main navigation">
+    <a class="site-brand" href="/" aria-label={siteConfig.name}>{siteConfig.name}</a>
+    <nav aria-label="Primary navigation">
       {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
+    <a class="site-search-link" href="/search/" aria-label="Search">Search</a>
   </div>
 </header>
