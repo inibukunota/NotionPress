@@ -10,7 +10,7 @@ Write in Notion. Sync to GitHub. Build with Astro. Deploy to Cloudflare Pages.
 - Astro static blog
 - Responsive design
 - Categories, tags and authors
-- Draft, Published and Unpublished statuses
+- Draft and Published statuses
 - Featured image taken from the first image in the Notion article
 - SEO metadata, canonical URLs, Open Graph and Twitter/X cards
 - JSON-LD structured data: WebSite, Article, BreadcrumbList and CollectionPage
@@ -34,9 +34,11 @@ Write in Notion. Sync to GitHub. Build with Astro. Deploy to Cloudflare Pages.
 6. Run `npm install`.
 7. Run `npm run sync:notion`.
 8. Run `npm run dev`.
-9. Connect the repository to Cloudflare Pages. Use `npm run sync:build` as the build command and `dist` as the output directory.
+9. Connect the repository to Cloudflare Pages. Use `npm run build` as the build command and `dist` as the output directory.
 
-For GitHub Actions sync, add NOTION_TOKEN and NOTION_DATABASE_ID as repository secrets. The workflow runs daily and can also be started manually.
+   The Cloudflare Pages build should **not** run the Notion sync. Notion syncing is handled by GitHub Actions, which commits the generated Markdown files to the repository. Every sync commit then triggers a normal Cloudflare Pages build.
+
+For GitHub Actions sync, add `NOTION_TOKEN` and `NOTION_DATABASE_ID` as repository secrets. The workflow runs daily and can also be started manually. Run the workflow once after the initial setup to create the first batch of Markdown content before the first Cloudflare Pages deployment.
 
 ## Notion database fields
 
@@ -46,11 +48,11 @@ Create these properties:
 |---|---|---|
 | Title | Title | Article title |
 | Slug | Rich text | URL slug |
-| Status | Select | Draft, Published or Unpublished |
+| Status | Select | Draft or Published |
 | Published Date | Date | Publication date |
 | Category | Select | Main category |
-| Author | Person or Rich text | Author name |
-| Excerpt | Rich text | Search/social description |
+| Author | Select | Author name |
+| Description | Rich text | Search/social description |
 | Tags | Multi-select | Article tags |
 
 The article body lives inside the Notion page.
