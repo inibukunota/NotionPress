@@ -4,11 +4,13 @@
   "private": false,
   "description": "A simple, fast and SEO-friendly blog starter powered by Notion, Astro and Cloudflare Pages.",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "astro dev",
     "sync:notion": "node scripts/notion-sync/index.mjs",
-    "build": "astro build",
+    "build": "node scripts/generate-rss.mjs && astro build",
     "sync:build": "npm run sync:notion && npm run build",
     "check": "astro check && astro build",
     "preview": "astro preview"
