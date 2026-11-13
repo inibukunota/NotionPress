@@ -17,7 +17,7 @@ main, .site-header-inner, .site-footer-inner { width: min(var(--site-width), cal
 .site-header nav { display: flex; gap: 1.25rem; }
 .site-header nav a, .site-search-link { color: var(--color-text); font-size: .85rem; text-decoration: none; }
 .site-header nav a:hover, .site-search-link:hover { color: var(--color-link); }
-.site-search-link { justify-self: end; }
+.site-search-link { justify-self: end; }\n.mobile-menu { display: none; justify-self: end; position: relative; }\n.mobile-menu summary { cursor: pointer; list-style: none; color: var(--color-text); font-size: .85rem; }\n.mobile-menu summary::-webkit-details-marker { display: none; }\n.mobile-menu nav { position: absolute; right: 0; top: calc(100% + .5rem); z-index: 10; min-width: 160px; padding: .5rem; background: #fff; border: 1px solid var(--color-border); box-shadow: 0 8px 20px rgba(0,0,0,.08); }\n.mobile-menu nav a { display: block; padding: .55rem .65rem; color: var(--color-text); text-decoration: none; }\n.mobile-menu nav a:hover { background: #f5f5f5; color: var(--color-link); }
 
 .home { padding-block: 2.5rem 5rem; }
 .home-feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 1.05fr); gap: 3rem; align-items: center; padding-block: 1rem 3.5rem; border-bottom: 1px solid var(--color-border); }
@@ -100,7 +100,7 @@ main, .site-header-inner, .site-footer-inner { width: min(var(--site-width), cal
   .story-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
   .story-row { grid-template-columns: 180px 1fr; }
 }
-@media (max-width: 600px) {
+@media (max-width: 600px) {\n  .desktop-nav { display: none; }\n  .site-search-link { display: none; }\n  .mobile-menu { display: block; }
   main, .site-header-inner, .site-footer-inner, .story-page { width: min(100% - 1.25rem, 600px); }
   .site-header-inner { min-height: 3.5rem; gap: .75rem; }
   .site-header nav { gap: .9rem; overflow-x: auto; white-space: nowrap; }
