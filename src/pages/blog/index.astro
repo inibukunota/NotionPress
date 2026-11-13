@@ -13,9 +13,21 @@ const meta = (post: typeof posts[number]) => `${post.data.category} · ${post.da
       <div class="section-heading">
         <h1 id="posts-heading">All Posts</h1>
       </div>
-      {posts.map(post => (
+      {posts.map((post, index) => (
         <article class="personal-post">
-          {post.data.heroImage && <a class="personal-post-image" href={`/blog/${post.data.slug}/`}><img src={post.data.heroImage} alt={post.data.title} loading="lazy" /></a>}
+          {post.data.heroImage && (
+            <a class="personal-post-image" href={`/blog/${post.data.slug}/`}>
+              <img
+                src={post.data.heroImage}
+                alt={post.data.title}
+                width="1200"
+                height="675"
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchpriority={index === 0 ? "high" : "auto"}
+                decoding="async"
+              />
+            </a>
+          )}
           <div class="personal-post-copy">
             <div class="eyebrow">{post.data.category}</div>
             <h2><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h2>
