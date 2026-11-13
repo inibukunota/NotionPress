@@ -61,3 +61,5 @@ main { width: min(var(--site-width), calc(100% - 2rem)); margin: 0 auto; }
   .story-page { padding-top: 2rem; }
   .story-body { font-size: 1rem; }
 }
+
+.share{width:min(var(--content-width),100%);margin:2rem auto 0;padding:1rem 0;border-top:1px solid var(--color-border);display:flex;gap:1rem;align-items:center}.share span{font-weight:700}.share a{text-decoration:none;color:var(--color-muted)}.related{margin:3rem auto 0}.related h2{margin-bottom:1rem}.story-card[hidden]{display:none}
