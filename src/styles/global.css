@@ -71,7 +71,7 @@ button, input { font: inherit; }
 .personal-listing {
   width: min(100% - 2rem, var(--site-width));
   margin-inline: auto;
-  padding-block: var(--space-6) var(--space-7);
+  padding-block: var(--space-6) var(--space-6);
 }
 
 /* Post listings */
@@ -109,8 +109,6 @@ button, input { font: inherit; }
   padding-block: var(--space-5);
   border-bottom: 1px solid var(--color-border);
 }
-
-.personal-post:first-of-type { padding-top: var(--space-5); }
 
 .personal-post-image {
   display: block;
@@ -151,19 +149,16 @@ button, input { font: inherit; }
   margin-top: var(--space-2);
   color: var(--color-muted);
   font-size: .78rem;
-}
-
-.story-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-1) var(--space-5);
+  gap: var(--space-1) var(--space-4);
 }
 
 /* Article */
 .personal-article { width: 100%; }
 
 .personal-article-header {
-  padding-block: 0 var(--space-4);
+  padding-block: 0 var(--space-5);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -186,7 +181,9 @@ button, input { font: inherit; }
   line-height: 1.55;
 }
 
-.personal-article-image { margin: var(--space-4) 0 var(--space-5); }
+.personal-article-image {
+  margin: var(--space-5) 0;
+}
 
 .personal-article-image img {
   display: block;
@@ -205,6 +202,11 @@ button, input { font: inherit; }
 .story-body p { margin: 0 0 var(--space-4); }
 .story-body h2 { margin: var(--space-6) 0 var(--space-2); }
 .story-body h3 { margin: var(--space-5) 0 var(--space-2); }
+
+.story-body h2:first-child,
+.story-body h3:first-child {
+  margin-top: var(--space-5);
+}
 
 .story-body ul,
 .story-body ol {
@@ -255,7 +257,7 @@ button, input { font: inherit; }
   padding-top: var(--space-3);
   border-top: 1px solid var(--color-border);
   display: flex;
-  gap: var(--space-5);
+  gap: var(--space-4);
   font-size: .82rem;
 }
 
@@ -285,8 +287,6 @@ button, input { font: inherit; }
   font-size: 1.15rem;
 }
 
-.related .personal-post:first-of-type { padding-top: var(--space-4); }
-
 /* Footer */
 .site-footer {
   border-top: 1px solid var(--color-border);
@@ -313,7 +313,7 @@ button, input { font: inherit; }
   text-decoration: none;
 }
 
-/* Mobile keeps the same spacing system, only reduces outer shell spacing */
+/* Mobile keeps the same component rhythm, only reduces outer shell spacing */
 @media (max-width: 700px) {
   .site-header-inner,
   .personal-home,
@@ -360,7 +360,7 @@ button, input { font: inherit; }
 
   .personal-home,
   .personal-listing {
-    padding-block: var(--space-5) var(--space-7);
+    padding-block: var(--space-5) var(--space-6);
   }
 
   .personal-post { padding-block: var(--space-5); }
@@ -370,13 +370,13 @@ button, input { font: inherit; }
 
   .personal-post p { display: none; }
 
-  .personal-article-header { padding-bottom: var(--space-3); }
+  .personal-article-header { padding-bottom: var(--space-4); }
 
   .personal-article-header h1 {
     font-size: clamp(2rem, 9vw, 2.7rem);
   }
 
-  .personal-article-image { margin-block: var(--space-3) var(--space-5); }
+  .personal-article-image { margin-block: var(--space-4) var(--space-5); }
 
   .personal-article .story-body { font-size: 1.05rem; }
 
