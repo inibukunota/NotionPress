@@ -169,9 +169,7 @@ button, input { font: inherit; }
   gap: var(--space-1) var(--space-4);
 }
 
-.story-meta span {
-  min-width: 0;
-}
+.story-meta span { min-width: 0; }
 
 .personal-article { width: 100%; }
 
@@ -202,9 +200,7 @@ button, input { font: inherit; }
   line-height: 1.55;
 }
 
-.personal-article-image {
-  margin: var(--space-5) 0;
-}
+.personal-article-image { margin: var(--space-5) 0; }
 
 .personal-article-image img {
   display: block;
@@ -313,9 +309,7 @@ button, input { font: inherit; }
 
 .share a,
 .tags a,
-.site-footer a {
-  white-space: nowrap;
-}
+.site-footer a { white-space: nowrap; }
 
 .story-footer {
   margin-top: var(--space-4);
@@ -425,9 +419,7 @@ button, input { font: inherit; }
 
   .personal-post p { display: none; }
 
-  .section-heading {
-    align-items: flex-start;
-  }
+  .section-heading { align-items: flex-start; }
 
   .section-heading h1,
   .section-heading h2 {
