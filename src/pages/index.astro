@@ -4,45 +4,36 @@ import { getPublishedPosts } from "../lib/content";
 import { websiteSchema } from "../lib/seo/structured-data";
 import { siteConfig } from "../config/site";
 
-const posts = await getPublishedPosts();
-const featured = posts[0];
-const remaining = posts.slice(1);
-const meta = (post: typeof posts[number]) => `${post.data.category} · ${post.data.publishedDate.toLocaleDateString("en-MY")} · ${Math.max(1, Math.ceil((post.body?.trim().split(/\\s+/).length || 0) / 200))} min read`;
+const posts = (await getPublishedPosts()).slice(0, 5);
+const meta = (post: typeof posts[number]) =>
+  `${post.data.category} · ${post.data.publishedDate.toLocaleDateString("en-MY")} · ${Math.max(1, Math.ceil((post.body?.trim().split(/\s+/).length || 0) / 200))} min read`;
 ---
+
 <BaseLayout title={siteConfig.name} description={siteConfig.description} structuredData={websiteSchema()}>
   <main class="personal-home">
     <header class="personal-intro">
-      <div class="eyebrow">Personal blog</div>
       <h1>{siteConfig.name}</h1>
       <p>{siteConfig.description}</p>
     </header>
 
-    {featured && (
-      <article class="personal-feature">
-        {featured.data.heroImage && <a class="personal-feature-image" href={`/blog/${featured.data.slug}/`} aria-label={featured.data.title}>
-          <img src={featured.data.heroImage} alt={featured.data.title} fetchpriority="high" />
-        </a>}
-        <div class="personal-feature-copy">
-          <div class="eyebrow">{featured.data.category}</div>
-          <h2><a href={`/blog/${featured.data.slug}/`}>{featured.data.title}</a></h2>
-          <p>{featured.data.description}</p>
-          <div class="story-meta">{meta(featured)} · By {featured.data.author}</div>
-        </div>
-      </article>
-    )}
-
     <section class="personal-posts" aria-labelledby="latest-heading">
-      <div class="section-heading"><h2 id="latest-heading">Latest posts</h2><a href="/blog/">All posts</a></div>
-      {remaining.map(post => (
+      <div class="section-heading">
+        <h2 id="latest-heading">Latest Posts</h2>
+        <a href="/blog/">All posts</a>
+      </div>
+
+      {posts.map((post) => (
         <article class="personal-post">
-          {post.data.heroImage && <a class="personal-post-image" href={`/blog/${post.data.slug}/`}>
-            <img src={post.data.heroImage} alt={post.data.title} loading="lazy" />
-          </a>}
+          {post.data.heroImage && (
+            <a class="personal-post-image" href={`/blog/${post.data.slug}/`} aria-label={post.data.title}>
+              <img src={post.data.heroImage} alt={post.data.title} loading="lazy" />
+            </a>
+          )}
           <div class="personal-post-copy">
             <div class="eyebrow">{post.data.category}</div>
             <h3><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h3>
             <p>{post.data.description}</p>
-            <div class="story-meta">{meta(post)}</div>
+            <div class="story-meta">{meta(post)} · By {post.data.author}</div>
           </div>
         </article>
       ))}
