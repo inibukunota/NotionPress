@@ -5,25 +5,25 @@ import { collectionPageSchema } from "../../lib/seo/structured-data";
 import { siteConfig } from "../../config/site";
 
 const posts = await getPublishedPosts();
-const meta = (post: typeof posts[number]) => `${post.data.category} · ${post.data.publishedDate.toLocaleDateString("en-MY")} · ${Math.max(1, Math.ceil((post.body?.trim().split(/\\s+/).length || 0) / 200))} min read`;
+const meta = (post: typeof posts[number]) => `${post.data.category} · ${post.data.publishedDate.toLocaleDateString("en-MY")} · ${Math.max(1, Math.ceil((post.body?.trim().split(/\s+/).length || 0) / 200))} min read`;
 ---
 <BaseLayout title={`Blog | ${siteConfig.name}`} description={`Latest posts from ${siteConfig.name}.`} structuredData={collectionPageSchema("Blog", `Latest posts from ${siteConfig.name}.`, siteConfig.url + "/blog/")}>
   <main class="personal-listing">
-    <header class="personal-intro">
-      <div class="eyebrow">Archive</div>
-      <h1>All posts</h1>
-      <p>Everything published on {siteConfig.name}.</p>
-    </header>
-    <section class="personal-posts">
-      {posts.map(post => <article class="personal-post">
-        {post.data.heroImage && <a class="personal-post-image" href={`/blog/${post.data.slug}/`}><img src={post.data.heroImage} alt={post.data.title} loading="lazy" /></a>}
-        <div class="personal-post-copy">
-          <div class="eyebrow">{post.data.category}</div>
-          <h2><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h2>
-          <p>{post.data.description}</p>
-          <div class="story-meta">{meta(post)}</div>
-        </div>
-      </article>)}
+    <section class="personal-posts" aria-labelledby="posts-heading">
+      <div class="section-heading">
+        <h1 id="posts-heading">All Posts</h1>
+      </div>
+      {posts.map(post => (
+        <article class="personal-post">
+          {post.data.heroImage && <a class="personal-post-image" href={`/blog/${post.data.slug}/`}><img src={post.data.heroImage} alt={post.data.title} loading="lazy" /></a>}
+          <div class="personal-post-copy">
+            <div class="eyebrow">{post.data.category}</div>
+            <h2><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h2>
+            <p>{post.data.description}</p>
+            <div class="story-meta">{meta(post)}</div>
+          </div>
+        </article>
+      ))}
     </section>
   </main>
 </BaseLayout>
