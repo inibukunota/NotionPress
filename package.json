@@ -1,0 +1,23 @@
+{
+  "name": "notionpress",
+  "version": "0.1.0",
+  "private": false,
+  "description": "A simple, fast and SEO-friendly blog starter powered by Notion, Astro and Cloudflare Pages.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "astro dev",
+    "sync:notion": "node scripts/notion-sync/index.mjs",
+    "build": "astro build",
+    "sync:build": "npm run sync:notion && npm run build",
+    "check": "astro check && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/rss": "4.0.14",
+    "@astrojs/sitemap": "3.6.1",
+    "astro": "5.16.9",
+    "typescript": "5.9.3"
+  },
+  "devDependencies": {}
+}
