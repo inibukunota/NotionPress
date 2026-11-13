@@ -8,7 +8,7 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     slug: z.string(),
-    status: z.enum(["draft", "published", "unpublished"]),
+    status: z.enum(["draft", "published"]),
     publishedDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     author: z.string(),
