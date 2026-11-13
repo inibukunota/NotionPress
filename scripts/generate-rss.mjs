@@ -23,11 +23,11 @@ function escapeXml(value = "") {
 
 function readFrontmatter(file) {
   const source = fs.readFileSync(file, "utf8");
-  const match = source.match(/^---\\n([\\s\\S]*?)\\n---/);
+  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return null;
 
   const frontmatter = {};
-  for (const line of match[1].split("\\n")) {
+  for (const line of match[1].split(/\r?\n/)) {
     const property = line.match(/^([A-Za-z][A-Za-z0-9]*)\\s*:\\s*(.*)$/);
     if (!property) continue;
 
