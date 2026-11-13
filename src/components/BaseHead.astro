@@ -27,7 +27,8 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, siteConfig.url);
-const imageUrl = image ? new URL(image, Astro.url).toString() : undefined;
+const socialImage = image || siteConfig.seo.defaultImage;
+const imageUrl = socialImage ? new URL(socialImage, Astro.url).toString() : undefined;
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
