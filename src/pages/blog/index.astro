@@ -32,7 +32,7 @@ const meta = (post: typeof posts[number]) => `${post.data.category} · ${post.da
             <div class="eyebrow">{post.data.category}</div>
             <h2><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h2>
             <p>{post.data.description}</p>
-            <div class="story-meta">{meta(post)}</div>
+            <div class="story-meta">{meta(post)} · By {post.data.author}</div>
           </div>
         </article>
       ))}
