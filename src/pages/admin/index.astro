@@ -100,7 +100,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
 
   .cms-panel {
-    border-top: 1px solid var(--border-color, #ddd);
+    border-top: 1px solid var(--color-border);
     padding-top: 1.5rem;
   }
 
@@ -139,7 +139,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     width: 100%;
     box-sizing: border-box;
     padding: 0.75rem;
-    border: 1px solid var(--border-color, #ccc);
+    border: 1px solid var(--color-border);
     border-radius: 0;
     background: transparent;
     color: inherit;
@@ -148,24 +148,31 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
   .hint {
     margin: 0;
-    color: var(--muted-color, #666);
+    color: var(--color-muted);
     font-size: 0.8125rem;
   }
 
   button {
     min-height: 44px;
     padding: 0.75rem 1rem;
-    border: 1px solid currentColor;
-    background: transparent;
-    color: inherit;
+    border: 1px solid var(--color-text);
+    background: var(--color-text);
+    color: var(--color-background);
     font: inherit;
     font-weight: 700;
     cursor: pointer;
   }
 
   button:hover:not(:disabled) {
-    background: currentColor;
-    color: var(--background-color, #fff);
+    background: var(--color-link-hover);
+    border-color: var(--color-link-hover);
+    color: #fff;
+  }
+
+  button:active:not(:disabled) {
+    background: var(--color-link);
+    border-color: var(--color-link);
+    color: #fff;
   }
 
   button:disabled {
