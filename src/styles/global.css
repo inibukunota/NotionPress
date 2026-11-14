@@ -36,38 +36,52 @@ a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 img { max-width: 100%; height: auto; }
 button, input { font: inherit; }
 
-.site-header { border-bottom: 1px solid var(--color-border); }
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-background);
+}
 
 .site-header-inner {
   width: min(100% - 2rem, var(--site-width));
   margin-inline: auto;
-  padding-block: var(--space-5) var(--space-4);
   min-width: 0;
 }
 
+/* Editorial masthead: publication identity first, navigation second. */
 .masthead {
+  position: relative;
+  padding-block: var(--space-5) var(--space-4);
   text-align: center;
+}
+
+.masthead::before {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 3px;
+  margin: 0 auto var(--space-4);
+  background: var(--color-link);
 }
 
 .site-brand {
   display: block;
   color: var(--color-text);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading, Georgia, "Times New Roman", serif);
   font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  letter-spacing: -.035em;
-  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: .98;
   text-decoration: none;
   overflow-wrap: anywhere;
 }
 
 .site-description {
-  margin: var(--space-2) 0 0;
+  margin: var(--space-2) auto 0;
+  max-width: 52ch;
   color: var(--color-muted);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: .9rem;
-  font-style: italic;
-  line-height: 1.35;
+  font-family: var(--font-body);
+  font-size: .84rem;
+  line-height: 1.45;
   overflow-wrap: anywhere;
 }
 
@@ -75,8 +89,9 @@ button, input { font: inherit; }
   display: block;
   margin-top: var(--space-3);
   color: var(--color-muted);
-  font-size: .72rem;
-  letter-spacing: .08em;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .09em;
   line-height: 1.4;
   text-transform: uppercase;
 }
@@ -85,19 +100,41 @@ button, input { font: inherit; }
   display: flex;
   justify-content: center;
   gap: var(--space-5);
-  margin-top: var(--space-4);
-  padding-top: var(--space-3);
+  margin-top: 0;
+  padding-block: var(--space-3);
   border-top: 1px solid var(--color-border);
 }
 
 .site-header nav a {
+  position: relative;
   color: var(--color-muted);
-  font-size: .82rem;
+  font-size: .78rem;
+  font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.site-header nav a:hover { color: var(--color-text); }
+.site-header nav a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -.75rem;
+  left: 0;
+  height: 2px;
+  background: var(--color-link);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
+}
+
+.site-header nav a:hover {
+  color: var(--color-text);
+}
+
+.site-header nav a:hover::after {
+  transform: scaleX(1);
+}
+
 .mobile-menu { display: none; }
 
 .personal-home,
@@ -406,13 +443,35 @@ button, input { font: inherit; }
     width: min(100% - 1.25rem, 680px);
   }
 
-  .site-header-inner { padding-block: var(--space-4); }
+  .site-header-inner { width: min(100% - 1.25rem, 680px); }
 
-  .masthead { padding-inline: var(--space-2); }
+  .masthead {
+    padding-block: var(--space-4) var(--space-3);
+  }
 
-  .site-brand { font-size: clamp(1.8rem, 9vw, 2.4rem); }
+  .masthead::before {
+    width: 32px;
+    height: 2px;
+    margin-bottom: var(--space-3);
+  }
 
-  .site-header nav { justify-content: flex-start; }
+  .site-brand {
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
+  }
+
+  .site-description {
+    font-size: .8rem;
+  }
+
+  .site-header nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .site-header nav::-webkit-scrollbar {
+    display: none;
+  }
 
   .site-header nav { gap: var(--space-4); }
   .desktop-nav { display: none !important; }
