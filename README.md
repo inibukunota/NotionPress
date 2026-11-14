@@ -14,7 +14,7 @@ Write in Notion. Sync to GitHub. Build with Astro. Deploy to Cloudflare Pages.
 - Featured image taken from the first image in the Notion article
 - SEO metadata, canonical URLs, Open Graph and Twitter/X cards
 - JSON-LD structured data: WebSite, Article, BreadcrumbList and CollectionPage
-- Sitemap, robots.txt and RSS
+- Sitemap, robots.txt, RSS and `llms.txt` for AI discovery
 - Google Analytics 4
 - ads.txt
 - Search-friendly clean URLs
