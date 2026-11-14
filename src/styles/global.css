@@ -221,37 +221,35 @@ button, input { font: inherit; }
 
 .story-body > * {
   margin-top: 0;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
 }
 
 .story-body > *:last-child { margin-bottom: 0; }
 
 .story-body p {
-  margin: 0 0 var(--space-4);
+  margin: 0 0 var(--space-3);
   max-width: 68ch;
 }
 
-.story-body > p + p { margin-top: 0; }
-
 .story-body h2 {
   margin-top: var(--space-6);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   font-size: 1.65rem;
-  line-height: 1.18;
+  line-height: 1.2;
 }
 
 .story-body h3 {
   margin-top: var(--space-5);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   font-size: 1.3rem;
-  line-height: 1.22;
+  line-height: 1.24;
 }
 
 .story-body h4 {
   margin-top: var(--space-5);
   margin-bottom: var(--space-2);
   font-size: 1.1rem;
-  line-height: 1.25;
+  line-height: 1.28;
 }
 
 .story-body h2:first-child,
