@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "astro dev",
     "sync:notion": "node scripts/notion-sync/index.mjs",
-    "build": "node scripts/generate-rss.mjs && astro build",
+    "build": "node scripts/generate-rss.mjs && node scripts/generate-llms.mjs && astro build",
     "sync:build": "npm run sync:notion && npm run build",
     "check": "astro check && astro build",
     "preview": "astro preview"
