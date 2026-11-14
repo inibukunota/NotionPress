@@ -22,11 +22,8 @@ import { siteConfig } from "../config/site";
       {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
 
-    <details class="mobile-menu">
-      <summary aria-label="Open navigation">Menu</summary>
-      <nav aria-label="Mobile navigation">
-        {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
-      </nav>
-    </details>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
   </div>
 </header>
