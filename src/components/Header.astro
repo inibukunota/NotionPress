@@ -2,10 +2,21 @@
 import { navigation } from "../config/navigation";
 import { siteConfig } from "../config/site";
 ---
+
 <header class="site-header">
   <div class="site-header-inner">
-    <a class="site-brand" href="/">{siteConfig.name}</a>
-    <p class="site-description">{siteConfig.description}</p>
+    <div class="masthead">
+      <a class="site-brand" href="/">{siteConfig.name}</a>
+      <p class="site-description">{siteConfig.description}</p>
+      <time class="masthead-date datetime" datetime={new Date().toISOString().slice(0, 10)}>
+        {new Intl.DateTimeFormat(siteConfig.locale, {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        }).format(new Date())}
+      </time>
+    </div>
 
     <nav class="desktop-nav" aria-label="Primary navigation">
       {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
