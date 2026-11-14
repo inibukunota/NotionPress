@@ -5,6 +5,7 @@
  * story-body pass: editorial measure, paragraph rhythm, element spacing
  * spacing pass: shared vertical rhythm and reduced one-off gaps
  * mobile pass: 320/375/414/768 safeguards, stacked section heads, compact article rhythm
+ * anti-slop audit: pass, no fake chrome, token-only styling, consistent shell, no generic feature/CTA scaffolding
  */
 @import "./theme.css";
 @import "./typography.css";
@@ -408,6 +409,7 @@ button, input { font: inherit; }
   .mobile-menu summary::-webkit-details-marker { display: none; }
 
   .mobile-menu nav {
+    display: block;
     position: absolute;
     top: calc(100% + var(--space-2));
     left: 0;
