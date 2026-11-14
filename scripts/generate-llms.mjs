@@ -8,18 +8,18 @@ const outputFile = path.join(outputDir, "llms.txt");
 const siteConfigFile = fs.readFileSync(path.join(root, "src", "config", "site.ts"), "utf8");
 
 function readConfig(key, fallback) {
-  const match = siteConfigFile.match(new RegExp(`\\\\b${key}\\\\s*:\\\\\s*["']([^"']*)["']`));
+  const match = siteConfigFile.match(new RegExp(`\\b${key}\\s*:\\\s*["']([^"']*)["']`));
   return match?.[1] || fallback;
 }
 
 function readFrontmatter(file) {
   const source = fs.readFileSync(file, "utf8");
-  const match = source.match(/^---\\r?\\n([\\s\\S]*?)\\r?\\n---/);
+  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return null;
 
   const frontmatter = {};
-  for (const line of match[1].split(/\\r?\\n/)) {
-    const property = line.match(/^([A-Za-z][A-Za-z0-9]*)\\s*:\\s*(.*)$/);
+  for (const line of match[1].split(/\r?\n/)) {
+    const property = line.match(/^([A-Za-z][A-Za-z0-9]*)\s*:\s*(.*)$/);
     if (!property) continue;
 
     let value = property[2].trim();
@@ -34,15 +34,15 @@ function readFrontmatter(file) {
 
 function cleanMarkdown(value = "") {
   return String(value)
-    .replaceAll("\\r", "")
-    .replaceAll("\\n", " ")
-    .replaceAll(/\\s+/g, " ")
+    .replaceAll("\r", "")
+    .replaceAll("\n", " ")
+    .replaceAll(/\s+/g, " ")
     .trim();
 }
 
 const name = readConfig("name", "My Blog");
 const description = readConfig("description", "A simple blog powered by Notion and Astro.");
-const siteUrl = readConfig("url", "https://example.com").replace(/\\/$/, "");
+const siteUrl = readConfig("url", "https://example.com").replace(/\/$/, "");
 
 const posts = fs.readdirSync(contentDir)
   .filter((file) => file.endsWith(".md"))
@@ -82,5 +82,5 @@ const lines = [
 ];
 
 fs.mkdirSync(outputDir, { recursive: true });
-fs.writeFileSync(outputFile, lines.join("\\n"));
+fs.writeFileSync(outputFile, lines.join("\n"));
 console.log(`Generated ${outputFile} with ${posts.length} published article(s).`);
