@@ -6,6 +6,7 @@
  * spacing pass: shared vertical rhythm and reduced one-off gaps
  * mobile pass: 320/375/414/768 safeguards, stacked section heads, compact article rhythm
  * anti-slop audit: pass, no fake chrome, token-only styling, consistent shell, no generic feature/CTA scaffolding
+ * final QA pass: article title/image alignment follows the shared page shell; body remains readable at 68ch
  */
 @import "./theme.css";
 @import "./typography.css";
@@ -184,7 +185,7 @@ button, input { font: inherit; }
 }
 
 .personal-article-header-inner {
-  width: min(100%, var(--content-width));
+  width: 100%;
   margin-inline: auto;
   min-width: 0;
 }
