@@ -1,1 +1,19 @@
---- import BaseLayout from "../layouts/BaseLayout.astro"; --- <BaseLayout title="Page not found" description="The page you requested could not be found."><main><section class="page-intro"><h1>404</h1><p>That page could not be found.</p><a href="/">Go home</a></section></main></BaseLayout>
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Page not found" description="The page you requested could not be found.">
+  <main class="personal-home">
+    <section class="personal-404" aria-labelledby="not-found-heading">
+      <div class="section-heading">
+        <h1 id="not-found-heading">Page not found</h1>
+        <span>404</span>
+      </div>
+
+      <div class="personal-404-copy">
+        <p>That page could not be found. It may have moved, been removed, or the URL may be incorrect.</p>
+        <a href="/">Back to the homepage</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
