@@ -2,14 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getPublishedPosts } from "../lib/content";
 import { websiteSchema } from "../lib/seo/structured-data";
-import { siteConfig } from "../config/site";
+import { config } from "../config/config";
 
 const posts = (await getPublishedPosts()).slice(0, 5);
 const meta = (post: typeof posts[number]) =>
   `${post.data.category} · ${post.data.publishedDate.toLocaleDateString("en-MY")} · ${Math.max(1, Math.ceil((post.body?.trim().split(/\s+/).length || 0) / 200))} min read`;
 ---
 
-<BaseLayout title={siteConfig.name} description={siteConfig.description} structuredData={websiteSchema()}>
+<BaseLayout title={config.site.name} description={config.site.description} structuredData={websiteSchema()}>
   <main class="personal-home">
     <section class="personal-posts" aria-labelledby="latest-heading">
       <div class="section-heading">
