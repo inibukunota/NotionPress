@@ -34,7 +34,7 @@ Write in Notion. Sync to GitHub. Build with Astro. Deploy to Cloudflare Pages.
 7. Run `npm install`.
 8. Run `npm run sync:notion`.
 9. Run `npm run dev`.
-10. Connect the repository to Cloudflare Pages. Use `npm run sync:build` as the build command and `dist` as the output directory.
+10. Connect the repository to Cloudflare Pages. Use `npm run build` as the build command and `dist` as the output directory. Cloudflare does not need `NOTION_TOKEN` or `NOTION_DATABASE_ID`. Notion syncing is handled by GitHub Actions.
 
 For GitHub Actions sync, add NOTION_TOKEN and NOTION_DATABASE_ID as repository secrets. The workflow runs daily and can also be started manually.
 
