@@ -1,15 +1,15 @@
 ---
-import { siteConfig } from "../config/site";
+import { config } from "../config/config";
 ---
 <footer class="site-footer">
   <div class="site-footer-inner">
     <div>
-      <strong>{siteConfig.name}</strong>
+      <strong>{config.site.name}</strong>
       <p>Powered by NotionPress</p>
     </div>
     <nav aria-label="Footer navigation">
       <a href="/rss.xml">RSS</a>
     </nav>
-    <small>© {new Date().getFullYear()} {siteConfig.name}</small>
+    <small>© {new Date().getFullYear()} {config.site.name}</small>
   </div>
 </footer>
