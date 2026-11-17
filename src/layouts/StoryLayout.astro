@@ -5,17 +5,17 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import StructuredData from "../components/StructuredData.astro";
 import { articleSchema, breadcrumbSchema } from "../lib/seo/structured-data";
-import { siteConfig } from "../config/site";
+import { config } from "../config/config";
 import FormattedDate from "../components/FormattedDate.astro";
 import { getPublishedPosts } from "../lib/content";
 
 const p = Astro.props;
-const url = new URL(`/blog/${p.slug}/`, siteConfig.url).toString();
+const url = new URL(`/blog/${p.slug}/`, config.site.url).toString();
 const data = [
   articleSchema(p),
   breadcrumbSchema([
-    { name: siteConfig.name, url: new URL("/", siteConfig.url).toString() },
-    { name: "Blog", url: new URL("/blog/", siteConfig.url).toString() },
+    { name: config.site.name, url: new URL("/", config.site.url).toString() },
+    { name: "Blog", url: new URL("/blog/", config.site.url).toString() },
     { name: p.title, url },
   ]),
 ];
@@ -30,7 +30,7 @@ const related = all
   .slice(0, 3);
 ---
 <!doctype html>
-<html lang={siteConfig.language}>
+<html lang={config.site.language}>
   <head>
     <BaseHead
       title={p.title}
