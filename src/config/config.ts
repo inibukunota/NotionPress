@@ -8,8 +8,8 @@
 export const config = {
   // Site
   site: {
-    name: "My Blog",
-    description: "A simple blog powered by NotionPress.",
+    name: "NotionPress",
+    description: "A simple blog powered by Notion.",
     url: "https://example.com",
     language: "en",
     locale: "en-MY",
@@ -17,7 +17,7 @@ export const config = {
 
   // Author
   author: {
-    name: "Your Name",
+    name: "NotionPress",
     url: "",
     bio: "",
     image: "",
