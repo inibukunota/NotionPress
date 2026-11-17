@@ -1,15 +1,14 @@
 ---
-import { navigation } from "../config/navigation";
-import { siteConfig } from "../config/site";
+import { config } from "../config/config";
 ---
 
 <header class="site-header">
   <div class="site-header-inner">
     <div class="masthead">
-      <a class="site-brand" href="/">{siteConfig.name}</a>
-      <p class="site-description">{siteConfig.description}</p>
+      <a class="site-brand" href="/">{config.site.name}</a>
+      <p class="site-description">{config.site.description}</p>
       <time class="masthead-date datetime" datetime={new Date().toISOString().slice(0, 10)}>
-        {new Intl.DateTimeFormat(siteConfig.locale, {
+        {new Intl.DateTimeFormat(config.site.locale, {
           weekday: "long",
           day: "numeric",
           month: "long",
@@ -19,11 +18,13 @@ import { siteConfig } from "../config/site";
     </div>
 
     <nav class="desktop-nav" aria-label="Primary navigation">
-      {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
     </nav>
 
     <nav class="mobile-nav" aria-label="Mobile navigation">
-      {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
     </nav>
   </div>
 </header>
