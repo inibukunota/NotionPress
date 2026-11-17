@@ -29,7 +29,6 @@ const related = all
   )
   .slice(0, 3);
 ---
-
 <!doctype html>
 <html lang={siteConfig.language}>
   <head>
@@ -50,6 +49,14 @@ const related = all
     <Header />
 
     <main class="personal-home">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li aria-current="page">{p.title}</li>
+        </ol>
+      </nav>
+
       <article class="personal-article">
         <header class="personal-article-header">
           <div class="personal-article-header-inner">
