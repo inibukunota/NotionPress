@@ -5,7 +5,7 @@ const root = process.cwd();
 const contentDir = path.join(root, "src", "content", "blog");
 const outputDir = path.join(root, "public");
 const outputFile = path.join(outputDir, "llms.txt");
-const siteConfigFile = fs.readFileSync(path.join(root, "src", "config", "site.ts"), "utf8");
+const siteConfigFile = fs.readFileSync(path.join(root, "src", "config", "config.ts"), "utf8");
 
 function readConfig(key, fallback) {
   const match = siteConfigFile.match(new RegExp(`\\b${key}\\s*:\\\s*["']([^"']*)["']`));
