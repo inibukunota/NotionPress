@@ -27,8 +27,8 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, config.site.url);
-const socialImage = image || "/og-image.jpg";
-const imageUrl = socialImage ? new URL(socialImage, config.site.url).toString() : undefined;
+const socialImage = image || "/images/notionpress-og.webp";
+const imageUrl = new URL(socialImage, config.site.url).toString();
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,8 +45,8 @@ const imageUrl = socialImage ? new URL(socialImage, config.site.url).toString() 
 <meta property="og:description" content={description} />
 <meta property="og:site_name" content={config.site.name} />
 <meta property="og:locale" content={config.site.locale.replace("-", "_")} />
-{imageUrl && <meta property="og:image" content={imageUrl} />}
-{imageUrl && <meta property="og:image:alt" content={title} />}
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content={title} />
 {type === "article" && publishedTime && <meta property="article:published_time" content={publishedTime} />}
 {type === "article" && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 {type === "article" && author && <meta property="article:author" content={author} />}
@@ -55,6 +55,6 @@ const imageUrl = socialImage ? new URL(socialImage, config.site.url).toString() 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-{imageUrl && <meta name="twitter:image" content={imageUrl} />}
-{imageUrl && <meta name="twitter:image:alt" content={title} />}
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={title} />
 <Analytics />
