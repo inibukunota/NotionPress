@@ -3,7 +3,7 @@ import {getPublishedPosts,slugify} from "../../lib/content"; import BaseLayout f
 export async function getStaticPaths(){const posts=await getPublishedPosts();return [...new Set(posts.flatMap(p=>p.data.tags))].map(tag=>({params:{slug:slugify(tag)},props:{tag}}));}
 const {tag}=Astro.props; const posts=(await getPublishedPosts()).filter(p=>p.data.tags.includes(tag));
 ---
-<BaseLayout title={`#${tag} | ${siteConfig.name}`} description={`Posts tagged ${tag}.`} structuredData={collectionPageSchema("#"+tag,`Posts tagged ${tag}.`,siteConfig.url+`/tag/${slugify(tag)}/`)}>
+<BaseLayout title={`#${tag} | ${config.site.name}`} description={`Posts tagged ${tag}.`} structuredData={collectionPageSchema("#"+tag,`Posts tagged ${tag}.`,config.site.url+`/tag/${slugify(tag)}/`)}>
   <main class="personal-listing">
     <section class="personal-posts">
       <div class="section-heading"><h1>#{tag}</h1></div>
