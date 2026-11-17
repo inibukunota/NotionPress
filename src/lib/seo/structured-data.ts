@@ -1,26 +1,40 @@
-import { siteConfig } from "../../config/site";
+import { config } from "../../config/config";
 
-const absoluteUrl = (value: string) => new URL(value, siteConfig.url).toString();
+const absoluteUrl = (value: string) => new URL(value, config.site.url).toString();
 
 export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: siteConfig.name,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    inLanguage: siteConfig.locale,
+    name: config.site.name,
+    description: config.site.description,
+    url: config.site.url,
+    inLanguage: config.site.locale,
     publisher: publisherSchema(),
   };
 }
 
 export function publisherSchema() {
-  const sameAs = Object.values(siteConfig.social).filter(Boolean);
+  const sameAs = Object.values(config.social).filter(Boolean);
+  const hasOrganization = Boolean(config.organization.name);
+
+  if (hasOrganization) {
+    return {
+      "@type": "Organization",
+      name: config.organization.name,
+      url: config.organization.url || config.site.url,
+      ...(config.organization.description ? { description: config.organization.description } : {}),
+      ...(config.organization.logo ? { logo: absoluteUrl(config.organization.logo) } : {}),
+      ...(sameAs.length > 0 ? { sameAs } : {}),
+    };
+  }
 
   return {
-    "@type": siteConfig.author.type,
-    name: siteConfig.author.name,
-    url: siteConfig.author.url || siteConfig.url,
+    "@type": "Person",
+    name: config.author.name,
+    url: config.author.url || config.site.url,
+    ...(config.author.bio ? { description: config.author.bio } : {}),
+    ...(config.author.image ? { image: absoluteUrl(config.author.image) } : {}),
     ...(sameAs.length > 0 ? { sameAs } : {}),
   };
 }
@@ -57,8 +71,8 @@ export function articleSchema(post: {
     ...(post.readingTime ? { timeRequired: `PT${post.readingTime}M` } : {}),
     articleSection: post.category,
     keywords: post.tags,
-    inLanguage: siteConfig.locale,
-    isPartOf: { "@type": "WebSite", name: siteConfig.name, url: siteConfig.url },
+    inLanguage: config.site.locale,
+    isPartOf: { "@type": "WebSite", name: config.site.name, url: config.site.url },
   };
 }
 
@@ -87,7 +101,7 @@ export function collectionPageSchema(
     name,
     description,
     url,
-    isPartOf: { "@type": "WebSite", name: siteConfig.name, url: siteConfig.url },
+    isPartOf: { "@type": "WebSite", name: config.site.name, url: config.site.url },
     ...(posts.length > 0
       ? {
           mainEntity: {
