@@ -34,7 +34,7 @@ export const config = {
 
   // Google Analytics 4
   analytics: {
-    ga4MeasurementId: "",
+    ga4MeasurementId: "G-PV5HKLVJQ3",
   },
 
   // Social profiles
