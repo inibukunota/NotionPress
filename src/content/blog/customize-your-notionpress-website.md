@@ -2,7 +2,7 @@
 title: "How to Customize Your NotionPress Website Without Breaking It"
 description: "A practical guide to changing the look and feel of NotionPress while keeping the codebase modular and maintainable."
 slug: "customize-your-notionpress-website"
-status: "published"
+status: "draft"
 publishedDate: "2026-11-13"
 author: "NotionPress"
 category: "Guides"

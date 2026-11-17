@@ -2,7 +2,7 @@
 title: "How NotionPress Publishing Works: From Notion to Your Live Website"
 description: "Understand the complete NotionPress publishing pipeline and what happens after you change an article in Notion."
 slug: "how-notionpress-publishing-works"
-status: "published"
+status: "draft"
 publishedDate: "2026-11-13"
 author: "NotionPress"
 category: "Guides"
