@@ -10,7 +10,7 @@ export const config = {
   site: {
     name: "NotionPress",
     description: "A simple blog powered by Notion.",
-    url: "https://example.com",
+    url: "https://notionpress.bukunota.my",
     language: "en",
     locale: "en-MY",
   },
