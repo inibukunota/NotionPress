@@ -30,11 +30,11 @@ Write in Notion. Sync to GitHub. Build with Astro. Deploy to Cloudflare Pages.
 5. Copy .env.example to .env and add:
    - NOTION_TOKEN
    - NOTION_DATABASE_ID
-   - PUBLIC_GA4_ID (optional)
-6. Run `npm install`.
-7. Run `npm run sync:notion`.
-8. Run `npm run dev`.
-9. Connect the repository to Cloudflare Pages. Use `npm run sync:build` as the build command and `dist` as the output directory.
+6. Open `src/config/config.ts` and add your site details, author/organization, GA4 Measurement ID, social profiles and monetisation settings.
+7. Run `npm install`.
+8. Run `npm run sync:notion`.
+9. Run `npm run dev`.
+10. Connect the repository to Cloudflare Pages. Use `npm run sync:build` as the build command and `dist` as the output directory.
 
 For GitHub Actions sync, add NOTION_TOKEN and NOTION_DATABASE_ID as repository secrets. The workflow runs daily and can also be started manually.
 
@@ -59,10 +59,12 @@ The first image in the article becomes the featured image automatically and is r
 
 ## Configuration
 
-Most site changes live in obvious locations:
+For normal site setup, edit only `src/config/config.ts`. It contains the site identity, author, organization, GA4, social profiles and monetisation settings.
 
-- Site name, URL and owner: `src/config/site.ts`
-- Navigation: `src/config/navigation.ts`
+You normally do not need to edit components or layouts just to set up a site.
+
+Developer customization lives in the following locations:
+
 - Colours, widths and fonts: `src/styles/theme.css`
 - Typography: `src/styles/typography.css`
 - General styling: `src/styles/global.css`
@@ -74,7 +76,7 @@ Most site changes live in obvious locations:
 
 ## Analytics
 
-Set `PUBLIC_GA4_ID` to your GA4 Measurement ID, for example `G-XXXXXXXXXX`.
+Set `analytics.ga4MeasurementId` in `src/config/config.ts` to your GA4 Measurement ID, for example `G-XXXXXXXXXX`.
 
 If it is empty, no Analytics script is rendered.
 
