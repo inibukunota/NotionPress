@@ -1,5 +1,7 @@
 ---
-const measurementId = import.meta.env.PUBLIC_GA4_ID;
+import { config } from "../config/config";
+
+const measurementId = config.analytics.ga4MeasurementId;
 ---
 
 {measurementId && (
