@@ -223,7 +223,13 @@ async function main() {
       imageCount++;
     }
 
-    const firstImage = imageBlocks[0];
+    // Only treat an image as the featured image when it appears
+    // before the article's first paragraph. Images elsewhere remain in the body.
+    const firstParagraphIndex = blocks.findIndex(b => b.type === "paragraph");
+    const firstHeroImageIndex = blocks.findIndex(
+      (b, index) => b.type === "image" && (firstParagraphIndex === -1 || index < firstParagraphIndex)
+    );
+    const firstImage = firstHeroImageIndex >= 0 ? blocks[firstHeroImageIndex] : null;
     const hero = firstImage ? localImages.get(firstImage.id) : null;
 
     const body = blocks
