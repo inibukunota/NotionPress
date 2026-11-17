@@ -105,6 +105,10 @@ button, input { font: inherit; }
   border-top: 1px solid var(--color-border);
 }
 
+/* Only one navigation is visible at a time. */
+.site-header .desktop-nav { display: flex; }
+.site-header .mobile-nav { display: none; }
+
 .site-header nav a {
   position: relative;
   color: var(--color-muted);
@@ -474,9 +478,9 @@ button, input { font: inherit; }
   }
 
   .site-header nav { gap: var(--space-4); }
-  .desktop-nav { display: none !important; }
+  .site-header .desktop-nav { display: none; }
 
-  .mobile-nav {
+  .site-header .mobile-nav {
     display: flex;
     width: 100%;
     margin-top: var(--space-1);
