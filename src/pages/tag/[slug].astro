@@ -1,5 +1,5 @@
 ---
-import {getPublishedPosts,slugify} from "../../lib/content"; import BaseLayout from "../../layouts/BaseLayout.astro"; import {collectionPageSchema} from "../../lib/seo/structured-data"; import {siteConfig} from "../../config/site";
+import {getPublishedPosts,slugify} from "../../lib/content"; import BaseLayout from "../../layouts/BaseLayout.astro"; import {collectionPageSchema} from "../../lib/seo/structured-data"; import {config} from "../../config/config";
 export async function getStaticPaths(){const posts=await getPublishedPosts();return [...new Set(posts.flatMap(p=>p.data.tags))].map(tag=>({params:{slug:slugify(tag)},props:{tag}}));}
 const {tag}=Astro.props; const posts=(await getPublishedPosts()).filter(p=>p.data.tags.includes(tag));
 ---
