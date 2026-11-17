@@ -3,7 +3,7 @@ import {getPublishedPosts,slugify} from "../../lib/content"; import BaseLayout f
 export async function getStaticPaths(){const posts=await getPublishedPosts();return [...new Set(posts.map(p=>p.data.category))].map(category=>({params:{slug:slugify(category)},props:{category}}));}
 const {category}=Astro.props; const posts=(await getPublishedPosts()).filter(p=>p.data.category===category);
 ---
-<BaseLayout title={`${category} | ${siteConfig.name}`} description={`Posts in the ${category} category.`} structuredData={collectionPageSchema(category,`Posts in the ${category} category.`,siteConfig.url+`/category/${slugify(category)}/`)}>
+<BaseLayout title={`${category} | ${config.site.name}`} description={`Posts in the ${category} category.`} structuredData={collectionPageSchema(category,`Posts in the ${category} category.`,config.site.url+`/category/${slugify(category)}/`)}>
   <main class="personal-listing">
     <section class="personal-posts">
       <div class="section-heading"><h1>{category}</h1></div>
